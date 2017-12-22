@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ingress-ds
+controller:
+  extraArgs:
+    default-ssl-certificate: default/nginx-tls-wildcard
+  hostNetwork: true
+hostPorts:
+  http: 80
+  https: 443
+rbac:
+  create: true
+defaultBackend:
+  enabled: true
+
